@@ -26,6 +26,7 @@ def update(request,id):
                 expense.transaction_date = transaction_date
                 expense.category = category
                 expense.save()
+                addcddddddddddd
                 messages.success(request, 'Amount updated successfully')
                 return redirect('history')
         return render(request,"update.html",{"allitem":allitem,"category_choices":category_choices})
