@@ -1,0 +1,34 @@
+def update(request,id):
+    category_choices = dict(Expense.CATEGORY_CHOICES)
+    if request.user.is_authenticated: 
+        allitem = Expense.objects.get(id=id)
+        if request.method == 'POST':
+            expense_name = request.POST.get('name')
+            new_amount = request.POST.get('amount')
+            transaction_date_str = request.POST.get('date')
+            category = request.POST.get('category')
+            if new_amount is not None:
+                expense = get_object_or_404(Expense, id=id)
+                 # Convert the date string to a datetime object
+                try:
+                    transaction_date = datetime.strptime(transaction_date_str, '%Y-%m-%d')
+                    # Extract the date part in 'YYYY-MM-DD' format
+                    # transaction_date = transaction_date.strftime('%Y-%m-%d')
+                except ValueError:
+                    # messages.warning(request, 'Should be in YYYY-MM-DD format')
+                   
+                    # Handle the case where the date string is in an unexpected format
+                    # You can return an error message or take appropriate action here
+                    return HttpResponseBadRequest('Invalid date format')
+                    
+                expense.expense_name = expense_name
+                expense.amount = new_amount
+                expense.transaction_date = transaction_date
+                expense.category = category
+                expense.save()
+                messages.success(request, 'Amount updated successfully')
+                return redirect('history')
+        return render(request,"update.html",{"allitem":allitem,"category_choices":category_choices})
+    else:
+            messages.warning(request, 'You are not logged in.')
+            return redirect('login')
