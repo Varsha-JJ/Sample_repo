@@ -1,0 +1,46 @@
+.main-body{
+    background-color:white;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 100px;
+    border-radius: 2px;
+    width: fit-content;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 12px;
+    display: block;
+    
+}
+
+input{
+    margin-top: 15px;
+    border-radius: 2px;
+
+}
+
+body{
+    /* background-image: url('image2.jpg'); */
+    background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgb(204, 184, 184);
+}
+
+#submit{
+    background-color: black;
+    color:white;
+}
+
+#check{
+    background-color: green;
+    color: green;
+}
+
+#submit{
+
+    margin: 0 auto;
+    
+}
+
+
